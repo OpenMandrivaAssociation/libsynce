@@ -15,6 +15,7 @@ Group: System/Libraries
 Source: %{name}-%{version}.tar.bz2
 URL: http://synce.sourceforge.net/
 Buildroot: %{_tmppath}/synce-root
+BuildRequires: dbus-devel
 Obsoletes: %{shortname}-%{name}
 
 %description
