@@ -1,5 +1,5 @@
 %define name	libsynce
-%define release	%mkrel 1
+%define release	%mkrel 2
 %define version	0.11
 
 %define shortname synce
@@ -30,6 +30,8 @@ SynCE project:
 Summary: SynCE: Basic library used by applications in the SynCE project
 Group: System/Libraries
 Provides: lib%shortname = %{version}-%{release}
+Obsoletes: %libname < %libname-%{version}
+
 
 %description -n %libname
 Libsynce is part of the SynCE project:
@@ -44,6 +46,7 @@ Summary: SynCE: Basic library used by applications in the SynCE project
 Group: System/Libraries
 Provides: lib%shortname-devel = %{version}-%{release}
 Requires: %{libname} = %{version}-%{release}
+Obsoletes: %libname-devel < %libname-devel-%{version}
 
 %description -n %libname-devel
 Libsynce is part of the SynCE project:
