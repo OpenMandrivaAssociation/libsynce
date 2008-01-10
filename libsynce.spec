@@ -19,12 +19,9 @@ BuildRequires: dbus-glib-devel
 Obsoletes: %{shortname}-%{name}
 
 %description
-Libsynce is part of the SynCE project:
-
-  http://synce.sourceforge.net/
-
+Libsynce is part of the SynCE project.
 This library is required to compile (at least) the following parts of the
-SynCE project:
+SynCE project.
 
 %package -n %libname
 Summary: SynCE: Basic library used by applications in the SynCE project
@@ -34,12 +31,7 @@ Obsoletes: %libname < %libname-%{version}
 
 
 %description -n %libname
-Libsynce is part of the SynCE project:
-
-  http://synce.sourceforge.net/
-
-This library is required to compile (at least) the following parts of the
-SynCE project.
+Libsynce is part of the SynCE project.
 
 %package -n %libname-devel
 Summary: SynCE: Basic library used by applications in the SynCE project
@@ -49,12 +41,7 @@ Requires: %{libname} = %{version}-%{release}
 Obsoletes: %libname-devel < %libname-devel-%{version}
 
 %description -n %libname-devel
-Libsynce is part of the SynCE project:
-
-  http://synce.sourceforge.net/
-
-This library is required to compile (at least) the following parts of the
-SynCE project.
+Libsynce is part of the SynCE project.
 
 %prep
 %setup -q
