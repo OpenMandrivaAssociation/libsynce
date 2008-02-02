@@ -1,5 +1,5 @@
 %define name	libsynce
-%define release	%mkrel 2
+%define release	%mkrel 3
 %define version	0.11
 
 %define shortname synce
@@ -17,6 +17,8 @@ URL: http://synce.sourceforge.net/
 Buildroot: %{_tmppath}/synce-root
 BuildRequires: dbus-glib-devel
 Obsoletes: %{shortname}-%{name}
+Obsoletes: %{shortname}
+Provides: %{shortname}
 
 %description
 Libsynce is part of the SynCE project.
