@@ -14,6 +14,7 @@ Source:		http://prdownloads.sourceforge.net/%{shortname}/%{name}-%{version}.tar.
 URL:		http://synce.sourceforge.net/
 Buildroot:	%{_tmppath}/synce-root
 BuildRequires:	dbus-glib-devel
+BuildRequires:	hal-devel
 Obsoletes:	%{shortname}-%{name} < %{version}-%{release}
 Obsoletes:	%{shortname} < %{version}-%{release}
 Provides:	%{shortname} = %{version}-%{release}
@@ -33,7 +34,7 @@ functions used by the rest of the project.
 
 %package -n %{develname}
 Summary:	Basic library used by applications in the SynCE project
-Group:		System/Libraries
+Group:		Development/C
 Provides:	%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
 Obsoletes:	%{libname}-devel < %{libname}-devel-%{version}
