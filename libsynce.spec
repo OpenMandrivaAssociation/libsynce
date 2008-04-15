@@ -1,73 +1,71 @@
-%define name	libsynce
-%define release	%mkrel 3
-%define version	0.11
+%define shortname	synce
 
-%define shortname synce
-%define major 0
-%define libname %mklibname %shortname %major
+%define major		0
+%define libname		%mklibname %{shortname} %{major}
+%define develname	%mklibname %{shortname} -d
 
-Summary: SynCE: Basic library used by applications in the SynCE project
-Name: %{name}
-Version: %{version}
-Release: %{release}
-License: MIT
-Group: System/Libraries
-Source: %{name}-%{version}.tar.bz2
-URL: http://synce.sourceforge.net/
-Buildroot: %{_tmppath}/synce-root
-BuildRequires: dbus-glib-devel
-Obsoletes: %{shortname}-%{name}
-Obsoletes: %{shortname}
-Provides: %{shortname}
+Summary:	Basic library used by applications in the SynCE project
+Name:		libsynce
+Version:	0.11.1
+Release:	%{mkrel 1}
+License:	MIT
+Group:		System/Libraries
+Source:		http://prdownloads.sourceforge.net/%{shortname}/%{name}-%{version}.tar.gz
+URL:		http://synce.sourceforge.net/
+Buildroot:	%{_tmppath}/synce-root
+BuildRequires:	dbus-glib-devel
+Obsoletes:	%{shortname}-%{name} < %{version}-%{release}
+Obsoletes:	%{shortname} < %{version}-%{release}
+Provides:	%{shortname} = %{version}-%{release}
 
 %description
-Libsynce is part of the SynCE project.
-This library is required to compile (at least) the following parts of the
-SynCE project.
+Libsynce is part of the SynCE project. It is a library of basic
+functions used by the rest of the project.
 
-%package -n %libname
-Summary: SynCE: Basic library used by applications in the SynCE project
-Group: System/Libraries
-Provides: lib%shortname = %{version}-%{release}
-Obsoletes: %libname < %libname-%{version}
+%package -n %{libname}
+Summary:	Basic library used by applications in the SynCE project
+Group:		System/Libraries
+Obsoletes:	%{libname} < %{libname}-%{version}
 
+%description -n %{libname}
+Libsynce is part of the SynCE project. It is a library of basic
+functions used by the rest of the project.
 
-%description -n %libname
-Libsynce is part of the SynCE project.
+%package -n %{develname}
+Summary:	Basic library used by applications in the SynCE project
+Group:		System/Libraries
+Provides:	%{name}-devel = %{version}-%{release}
+Requires:	%{libname} = %{version}-%{release}
+Obsoletes:	%{libname}-devel < %{libname}-devel-%{version}
+Obsoletes:	%{mklibname synce 0 -d} < %{version}-%{release}
 
-%package -n %libname-devel
-Summary: SynCE: Basic library used by applications in the SynCE project
-Group: System/Libraries
-Provides: lib%shortname-devel = %{version}-%{release}
-Requires: %{libname} = %{version}-%{release}
-Obsoletes: %libname-devel < %libname-devel-%{version}
-
-%description -n %libname-devel
-Libsynce is part of the SynCE project.
+%description -n %{develname}
+Libsynce is part of the SynCE project. It is a library of basic
+functions used by the rest of the project.
 
 %prep
 %setup -q
 
 %build
-%configure
+%configure2_5x
 %make
 
 %install
 %makeinstall
 
-rm -fr %buildroot/%_datadir/doc
+rm -fr %{buildroot}%{_datadir}/doc
 
-%post -n %libname -p /sbin/ldconfig
-%postun -n %libname -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
 
-%files -n %libname
+%postun -n %{libname} -p /sbin/ldconfig
+
+%files -n %{libname}
+%defattr(-,root,root)
+%{_libdir}/libsynce.so.%{major}*
+
+%files -n %{develname}
 %defattr(-,root,root)
 %doc README TODO
-%{_libdir}/libsynce.so.%{major}
-%{_libdir}/libsynce.so.%{major}.*
-
-%files -n %libname-devel
-%defattr(-,root,root)
 %{_libdir}/libsynce.so
 %{_libdir}/libsynce.a
 %{_libdir}/libsynce.la
@@ -75,3 +73,4 @@ rm -fr %buildroot/%_datadir/doc
 %{_libdir}/pkgconfig/libsynce.pc
 %{_mandir}/man3/*3*
 %{_mandir}/man7/*7*
+
