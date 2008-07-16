@@ -6,11 +6,11 @@
 
 Summary:	Basic library used by applications in the SynCE project
 Name:		libsynce
-Version:	0.11.1
+Version:	0.12
 Release:	%{mkrel 1}
 License:	MIT
 Group:		System/Libraries
-Source:		http://prdownloads.sourceforge.net/%{shortname}/%{name}-%{version}.tar.gz
+Source0:	http://prdownloads.sourceforge.net/%{shortname}/%{name}-%{version}.tar.gz
 URL:		http://synce.sourceforge.net/
 Buildroot:	%{_tmppath}/synce-root
 BuildRequires:	dbus-glib-devel
@@ -78,4 +78,3 @@ rm -fr %{buildroot}%{_datadir}/doc
 %{_libdir}/pkgconfig/libsynce.pc
 %{_mandir}/man3/*3*
 %{_mandir}/man7/*7*
-
