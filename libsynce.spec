@@ -6,11 +6,13 @@
 
 Summary:	Basic library used by applications in the SynCE project
 Name:		libsynce
-Version:	0.12
+Version:	0.13
 Release:	%{mkrel 1}
 License:	MIT
 Group:		System/Libraries
 Source0:	http://prdownloads.sourceforge.net/%{shortname}/%{name}-%{version}.tar.gz
+# Fix underlinking - AdamW 2009/01
+Patch0:		libsynce-0.13-underlink.patch
 URL:		http://synce.sourceforge.net/
 Buildroot:	%{_tmppath}/synce-root
 BuildRequires:	dbus-glib-devel
@@ -46,8 +48,14 @@ functions used by the rest of the project.
 
 %prep
 %setup -q
+%patch0 -p1 -b .underlink
 
 %build
+# Needed for underlink.patch. Can't use autoreconf because this code
+# does braindead stuff with libtool - AdamW 2009/01
+aclocal
+automake
+
 %configure2_5x
 %make
 
