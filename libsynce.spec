@@ -11,7 +11,10 @@ Release:	%{mkrel 1}
 License:	MIT
 Group:		System/Libraries
 Source0:	http://prdownloads.sourceforge.net/%{shortname}/%{name}-%{version}.tar.gz
-# Fix underlinking - AdamW 2009/01
+# Fix underlinking. Done in Makefile.in not Makefile.am because they
+# do weird stuff to autofoo so you get odd errors if you try to
+# do autoreconf or automake or anything. Has been fixed upstream now
+# in any case so future releases will be OK - AdamW 2009/01
 Patch0:		libsynce-0.13-underlink.patch
 URL:		http://synce.sourceforge.net/
 Buildroot:	%{_tmppath}/synce-root
@@ -51,11 +54,6 @@ functions used by the rest of the project.
 %patch0 -p1 -b .underlink
 
 %build
-# Needed for underlink.patch. Can't use autoreconf because this code
-# does braindead stuff with libtool - AdamW 2009/01
-aclocal
-automake
-
 %configure2_5x
 %make
 
