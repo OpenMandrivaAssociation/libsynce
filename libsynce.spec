@@ -1,28 +1,18 @@
-%define shortname	synce
-
 %define major		0
-%define libname		%mklibname %{shortname} %{major}
-%define develname	%mklibname %{shortname} -d
+%define libname		%mklibname synce %{major}
+%define develname	%mklibname synce -d
 
 Summary:	Basic library used by applications in the SynCE project
 Name:		libsynce
-Version:	0.13
+Version:	0.14
 Release:	%{mkrel 1}
 License:	MIT
 Group:		System/Libraries
-Source0:	http://prdownloads.sourceforge.net/%{shortname}/%{name}-%{version}.tar.gz
-# Fix underlinking. Done in Makefile.in not Makefile.am because they
-# do weird stuff to autofoo so you get odd errors if you try to
-# do autoreconf or automake or anything. Has been fixed upstream now
-# in any case so future releases will be OK - AdamW 2009/01
-Patch0:		libsynce-0.13-underlink.patch
+Source0:	http://prdownloads.sourceforge.net/synce/%{name}-%{version}.tar.gz
 URL:		http://synce.sourceforge.net/
 Buildroot:	%{_tmppath}/synce-root
 BuildRequires:	dbus-glib-devel
 BuildRequires:	hal-devel
-Obsoletes:	%{shortname}-%{name} < %{version}-%{release}
-Obsoletes:	%{shortname} < %{version}-%{release}
-Provides:	%{shortname} = %{version}-%{release}
 
 %description
 Libsynce is part of the SynCE project. It is a library of basic
@@ -31,7 +21,6 @@ functions used by the rest of the project.
 %package -n %{libname}
 Summary:	Basic library used by applications in the SynCE project
 Group:		System/Libraries
-Obsoletes:	%{libname} < %{libname}-%{version}
 
 %description -n %{libname}
 Libsynce is part of the SynCE project. It is a library of basic
@@ -42,8 +31,7 @@ Summary:	Basic library used by applications in the SynCE project
 Group:		Development/C
 Provides:	%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
-Obsoletes:	%{libname}-devel < %{libname}-devel-%{version}
-Obsoletes:	%{mklibname synce 0 -d} < %{version}-%{release}
+Obsoletes:	%{mklibname synce 0 -d} < 0.13
 
 %description -n %{develname}
 Libsynce is part of the SynCE project. It is a library of basic
@@ -51,7 +39,6 @@ functions used by the rest of the project.
 
 %prep
 %setup -q
-%patch0 -p1 -b .underlink
 
 %build
 %configure2_5x
