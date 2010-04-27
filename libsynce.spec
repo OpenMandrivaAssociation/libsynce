@@ -1,15 +1,15 @@
 %define major		0
 %define libname		%mklibname synce %{major}
 %define develname	%mklibname synce -d
-%define svn r3893
+%define svn 0
 
 Summary:	Basic library used by applications in the SynCE project
 Name:		libsynce
 Version:	0.15
-Release:	%mkrel 0.%{svn}.1
+Release:	%mkrel 1
 License:	MIT
 Group:		System/Libraries
-Source0:	http://prdownloads.sourceforge.net/synce/%{name}-%{svn}.tar.xz
+Source0:	http://prdownloads.sourceforge.net/synce/%{name}-%{version}.tar.gz
 URL:		http://synce.sourceforge.net/
 Buildroot:	%{_tmppath}/synce-root
 BuildRequires:	dbus-glib-devel
@@ -39,10 +39,9 @@ Libsynce is part of the SynCE project. It is a library of basic
 functions used by the rest of the project.
 
 %prep
-%setup -q -n %{name}
+%setup -q
 
 %build
-./autogen.sh
 %configure2_5x
 %make
 
@@ -50,6 +49,7 @@ functions used by the rest of the project.
 %makeinstall
 
 rm -fr %{buildroot}%{_datadir}/doc
+rm -fr %{buildroot}%{_libdir}/*.la
 
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
@@ -68,7 +68,6 @@ rm -fr %{buildroot}%{_datadir}/doc
 %doc README TODO
 %{_libdir}/libsynce.so
 %{_libdir}/libsynce.a
-%{_libdir}/libsynce.la
 %{_includedir}/*.h
 %{_libdir}/pkgconfig/libsynce.pc
 %{_mandir}/man3/*3*
