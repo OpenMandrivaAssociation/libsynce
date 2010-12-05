@@ -6,7 +6,7 @@
 Summary:	Basic library used by applications in the SynCE project
 Name:		libsynce
 Version:	0.15
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	MIT
 Group:		System/Libraries
 Source0:	http://prdownloads.sourceforge.net/synce/%{name}-%{version}.tar.gz
