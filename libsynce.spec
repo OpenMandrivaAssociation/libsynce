@@ -5,15 +5,14 @@
 
 Summary:	Basic library used by applications in the SynCE project
 Name:		libsynce
-Version:	0.15
-Release:	%mkrel 2
+Version:	0.15.1
+Release:	%mkrel 1
 License:	MIT
 Group:		System/Libraries
 Source0:	http://prdownloads.sourceforge.net/synce/%{name}-%{version}.tar.gz
 URL:		http://synce.sourceforge.net/
 Buildroot:	%{_tmppath}/synce-root
 BuildRequires:	dbus-glib-devel
-BuildRequires:	hal-devel
 
 %description
 Libsynce is part of the SynCE project. It is a library of basic
@@ -42,7 +41,7 @@ functions used by the rest of the project.
 %setup -q
 
 %build
-%configure2_5x
+%configure2_5x --enable-udev-support --disable-hal-support
 %make
 
 %install
