@@ -14,6 +14,8 @@ Source0:	http://downloads.sourceforge.net/project/synce/SynCE/synce-core/synce-c
 URL:		http://synce.sourceforge.net/
 BuildRequires:	dbus-glib-devel
 BuildRequires:	dhcp-client
+BuildRequires:	pkgconfig(udev)
+BuildRequires:	pkgconfig(gudev-1.0)
 
 
 %description
