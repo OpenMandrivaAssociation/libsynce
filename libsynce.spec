@@ -74,6 +74,7 @@ export PATH=$PATH:/sbin/
 	       --disable-hal-support \
 	       --enable-dccm-file-support \
 	       --enable-odccm-support \
+	       --enable-python-bindings \
 	       --enable-bluetooth-support \
 	       --disable-static
 %make
