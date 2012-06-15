@@ -2,6 +2,7 @@
 %define libname		%mklibname synce %{major}
 %define develname	%mklibname synce -d
 %define svn 0
+%rename	synce-core
 
 Summary:	Basic library used by applications in the SynCE project
 Name:		synce-core
@@ -13,6 +14,7 @@ Source0:	http://downloads.sourceforge.net/project/synce/SynCE/synce-core/synce-c
 URL:		http://synce.sourceforge.net/
 BuildRequires:	dbus-glib-devel
 BuildRequires:	dhcp-client
+
 
 %description
 Libsynce is part of the SynCE project. It is a library of basic
