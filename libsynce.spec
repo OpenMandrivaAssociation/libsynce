@@ -2,13 +2,12 @@
 %define libname		%mklibname synce %{major}
 %define develname	%mklibname synce -d
 %define svn 0
-%rename	synce-core
 
 Summary:	Basic library used by applications in the SynCE project
 #Name:		synce-core
 Name:		libsynce
 Version:	0.16
-Release:	1
+Release:	2
 License:	MIT
 Group:		System/Libraries
 Source0:	http://downloads.sourceforge.net/project/synce/SynCE/synce-core/synce-core-%{version}.tar.gz
@@ -21,9 +20,20 @@ BuildRequires:	dhcp-client
 Libsynce is part of the SynCE project. It is a library of basic
 functions used by the rest of the project.
 
+%package -n	synce-core
+Summary:	Basic library used by applications in the SynCE project
+Group:		Communications
+Requires:	%{libname} = %{version}-%{release}
+
+%description -n synce-core
+Synce-core is part of the SynCE project. It is a library of basic
+functions used by the rest of the project.
+
+
 %package -n %{libname}
 Summary:	Basic library used by applications in the SynCE project
 Group:		System/Libraries
+Requires:	synce-core = %{version}-%{release}
 
 %description -n %{libname}
 Libsynce is part of the SynCE project. It is a library of basic
@@ -34,7 +44,9 @@ Summary:	Basic library used by applications in the SynCE project
 Group:		Development/C
 Provides:	%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
+Requires:	synce-core = %{version}-%{release}
 Obsoletes:	%{mklibname synce 0 -d} < 0.13
+Provides:	synce-core-devel
 
 %description -n %{develname}
 Libsynce is part of the SynCE project. It is a library of basic
@@ -67,7 +79,7 @@ export PATH=$PATH:/sbin/
 
 rm -fr %{buildroot}%{_datadir}/doc
 
-%files
+%files -n synce-core
 %{_datadir}/synce-core/dhclient.conf
 %{_datadir}/synce-core/udev-synce-*
 %{_datadir}/synce-core/synceconnector.py
