@@ -17,6 +17,7 @@ BuildRequires:	dhcp-client
 BuildRequires:	pkgconfig(udev)
 BuildRequires:	pkgconfig(gudev-1.0)
 BuildRequires:	python-devel
+BuildRequires:	python-pyrex
 BuildRequires:	pkgconfig(pygobject-2.0)
 
 
