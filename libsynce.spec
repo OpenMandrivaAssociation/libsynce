@@ -5,7 +5,8 @@
 %rename	synce-core
 
 Summary:	Basic library used by applications in the SynCE project
-Name:		synce-core
+#Name:		synce-core
+Name:		libsynce
 Version:	0.16
 Release:	1
 License:	MIT
