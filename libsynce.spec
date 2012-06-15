@@ -16,6 +16,7 @@ BuildRequires:	dbus-glib-devel
 BuildRequires:	dhcp-client
 BuildRequires:	pkgconfig(udev)
 BuildRequires:	pkgconfig(gudev-1.0)
+BuildRequires:	python-devel
 
 
 %description
