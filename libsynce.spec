@@ -7,7 +7,7 @@ Summary:	Basic library used by applications in the SynCE project
 #Name:		synce-core
 Name:		libsynce
 Version:	0.16
-Release:	2
+Release:	3
 License:	MIT
 Group:		System/Libraries
 Source0:	http://downloads.sourceforge.net/project/synce/SynCE/synce-core/synce-core-%{version}.tar.gz
