@@ -12,6 +12,11 @@ License:	MIT
 Group:		System/Libraries
 Source0:	http://downloads.sourceforge.net/project/synce/SynCE/synce-core/synce-core-%{version}.tar.gz
 URL:		https://synce.sourceforge.net/
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	dbus-glib-devel
 BuildRequires:	dhcp-client
 BuildRequires:	pkgconfig(udev)
